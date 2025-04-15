@@ -1,0 +1,6 @@
+@csharp.multitenant_HostAddress = http://localhost:5014
+
+GET {{csharp.multitenant_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
