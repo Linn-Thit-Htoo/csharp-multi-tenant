@@ -8,24 +8,37 @@ namespace csharp.multitenant.Extensions;
 
 public static class DependencyInjectionExtensions
 {
-    public static IServiceCollection AddDependencies(this IServiceCollection services, WebApplicationBuilder builder)
+    public static IServiceCollection AddDependencies(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        return builder.Services
-            .AddCommonServices(builder)
+        return builder
+            .Services.AddCommonServices(builder)
             .AddDbContextService(builder)
             .AddBusinessLogicServices()
             .AddDataAccessServices();
     }
 
-    public static IServiceCollection AddCommonServices(this IServiceCollection services, WebApplicationBuilder builder)
+    public static IServiceCollection AddCommonServices(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        builder.Services.AddControllers().AddJsonOptions(opt =>
-        {
-            opt.JsonSerializerOptions.PropertyNamingPolicy = null;
-        });
+        builder
+            .Services.AddControllers()
+            .AddJsonOptions(opt =>
+            {
+                opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
 
-        builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
-            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+        builder
+            .Configuration.SetBasePath(builder.Environment.ContentRootPath)
+            .AddJsonFile(
+                $"appsettings.{builder.Environment.EnvironmentName}.json",
+                optional: false,
+                reloadOnChange: true
+            )
             .AddEnvironmentVariables();
 
         builder.Services.AddEndpointsApiExplorer();
@@ -39,16 +52,21 @@ public static class DependencyInjectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddDbContextService(this IServiceCollection services, WebApplicationBuilder builder)
+    public static IServiceCollection AddDbContextService(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        builder.Services.AddDbContext<AppDbContext>((sp, opt) =>
-        {
-            var tenantProvider = sp.GetRequiredService<TenantProvider>();
-            string connectionString = tenantProvider.GetConnectionString();
+        builder.Services.AddDbContext<AppDbContext>(
+            (sp, opt) =>
+            {
+                var tenantProvider = sp.GetRequiredService<TenantProvider>();
+                string connectionString = tenantProvider.GetConnectionString();
 
-            opt.UseSqlServer(connectionString);
-            opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-        });
+                opt.UseSqlServer(connectionString);
+                opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            }
+        );
 
         return services;
     }
