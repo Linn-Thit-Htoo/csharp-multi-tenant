@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\csharp.multitenant.Models\csharp.multitenant.Models.csproj" />
   </ItemGroup>
 
