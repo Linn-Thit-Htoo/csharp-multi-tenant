@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace csharp.multitenant.Models.Features.PageSetting
+﻿namespace csharp.multitenant.Models.Features.PageSetting
 {
     public class PageSettingModel
     {
