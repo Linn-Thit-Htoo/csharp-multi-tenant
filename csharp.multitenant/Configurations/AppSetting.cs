@@ -1,4 +1,4 @@
-﻿namespace csharp.multitenant.Configurations.AppSetting;
+﻿namespace csharp.multitenant.Configurations;
 
 public class AppSetting
 {

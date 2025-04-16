@@ -1,4 +1,4 @@
-﻿using csharp.multitenant.Configurations.AppSetting;
+﻿using csharp.multitenant.Configurations;
 using Microsoft.Extensions.Options;
 
 namespace csharp.multitenant.Behaviors;

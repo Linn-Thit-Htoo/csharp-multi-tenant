@@ -1,6 +1,6 @@
 ﻿using csharp.multitenant.AppDbContextModels;
 using csharp.multitenant.Behaviors;
-using csharp.multitenant.Configurations.AppSetting;
+using csharp.multitenant.Configurations;
 using csharp.multitenant.Features.Blog;
 using Microsoft.EntityFrameworkCore;
 
