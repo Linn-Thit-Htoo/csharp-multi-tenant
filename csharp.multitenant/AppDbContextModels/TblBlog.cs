@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace csharp.multitenant.AppDbContextModels;
+﻿namespace csharp.multitenant.AppDbContextModels;
 
 public partial class TblBlog
 {
