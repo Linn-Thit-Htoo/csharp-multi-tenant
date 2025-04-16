@@ -1,10 +1,10 @@
-﻿using csharp.multitenant.AppDbContextModels;
+﻿using System.Net;
+using csharp.multitenant.AppDbContextModels;
 using csharp.multitenant.Extensions;
 using csharp.multitenant.Models.Features;
 using csharp.multitenant.Models.Features.Blog;
 using csharp.multitenant.Models.Features.PageSetting;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace csharp.multitenant.Features.Blog;
 
@@ -19,7 +19,11 @@ public class DA_Blog
         _logger = logger;
     }
 
-    public async Task<Result<BlogListResponseModelV1>> GetBlogListAsync(int pageNo, int pageSize, CancellationToken cs = default)
+    public async Task<Result<BlogListResponseModelV1>> GetBlogListAsync(
+        int pageNo,
+        int pageSize,
+        CancellationToken cs = default
+    )
     {
         Result<BlogListResponseModelV1> result;
         try
@@ -48,17 +52,20 @@ public class DA_Blog
             var model = new BlogListResponseModelV1()
             {
                 PageSetting = pageSetting,
-                Blogs = lst.Select(x => x.ToDto()).ToList()
+                Blogs = lst.Select(x => x.ToDto()).ToList(),
             };
 
             result = Result<BlogListResponseModelV1>.SuccessResult(model);
         }
         catch (Exception ex)
         {
-            result = Result<BlogListResponseModelV1>.FailureResult(ex.ToString(), HttpStatusCode.InternalServerError);
+            result = Result<BlogListResponseModelV1>.FailureResult(
+                ex.ToString(),
+                HttpStatusCode.InternalServerError
+            );
         }
 
-    result:
+        result:
         return result;
     }
 }
