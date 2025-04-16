@@ -5,9 +5,7 @@ namespace csharp.multitenant.AppDbContextModels;
 public partial class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options)
-    {
-    }
+        : base(options) { }
 
     public virtual DbSet<TblBlog> TblBlogs { get; set; }
 
