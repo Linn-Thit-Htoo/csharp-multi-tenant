@@ -13,7 +13,7 @@ public static class Mapper
             BlogTitle = model.BlogTitle,
             BlogAuthor = model.BlogAuthor,
             BlogContent = model.BlogContent,
-            IsDeleted = model.IsDeleted
+            IsDeleted = model.IsDeleted,
         };
     }
 }
