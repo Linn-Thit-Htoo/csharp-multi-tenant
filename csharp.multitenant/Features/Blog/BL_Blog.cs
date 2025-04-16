@@ -1,6 +1,6 @@
-﻿using csharp.multitenant.Models.Features;
+﻿using System.Net;
+using csharp.multitenant.Models.Features;
 using csharp.multitenant.Models.Features.Blog;
-using System.Net;
 
 namespace csharp.multitenant.Features.Blog;
 
@@ -13,7 +13,11 @@ public class BL_Blog
         _dA_Blog = dA_Blog;
     }
 
-    public async Task<Result<BlogListResponseModelV1>> GetBlogListAsync(int pageNo, int pageSize, CancellationToken cs = default)
+    public async Task<Result<BlogListResponseModelV1>> GetBlogListAsync(
+        int pageNo,
+        int pageSize,
+        CancellationToken cs = default
+    )
     {
         Result<BlogListResponseModelV1> result;
         try
@@ -34,10 +38,13 @@ public class BL_Blog
         }
         catch (Exception ex)
         {
-            result = Result<BlogListResponseModelV1>.FailureResult(ex.ToString(), HttpStatusCode.InternalServerError);
+            result = Result<BlogListResponseModelV1>.FailureResult(
+                ex.ToString(),
+                HttpStatusCode.InternalServerError
+            );
         }
 
-    result:
+        result:
         return result;
     }
 }
