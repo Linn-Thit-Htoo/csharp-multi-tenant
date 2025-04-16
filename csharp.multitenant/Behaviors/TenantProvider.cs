@@ -14,9 +14,11 @@ public class TenantProvider
         _appSetting = setting.Value;
     }
 
-    public string TenantId => _httpContextAccessor.HttpContext!
-        .Request.Headers[Constants.ApplicationConstants.TenantHeader].ToString();
+    public string TenantId =>
+        _httpContextAccessor
+            .HttpContext!.Request.Headers[Constants.ApplicationConstants.TenantHeader]
+            .ToString();
 
-    public string GetConnectionString() => _appSetting.Tenants
-        .FirstOrDefault(x => x.TenantId == TenantId)?.ConnectionString!;
+    public string GetConnectionString() =>
+        _appSetting.Tenants.FirstOrDefault(x => x.TenantId == TenantId)?.ConnectionString!;
 }
