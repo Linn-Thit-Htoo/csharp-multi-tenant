@@ -1,5 +1,4 @@
 ﻿using csharp.multitenant.Features.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace csharp.multitenant.Features.Blog
