@@ -1,7 +1,6 @@
-﻿namespace csharp.multitenant.Constants
+﻿namespace csharp.multitenant.Constants;
+
+public class ApplicationConstants
 {
-    public class ApplicationConstants
-    {
-        public const string TenantHeader = "X-TenantId";
-    }
+    public const string TenantHeader = "X-TenantId";
 }
