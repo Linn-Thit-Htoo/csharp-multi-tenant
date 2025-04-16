@@ -1,5 +1,4 @@
 ﻿using csharp.multitenant.Extensions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace csharp.multitenant.Features.Core
